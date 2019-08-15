@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import javax.imageio.ImageIO;
 import javax.swing.filechooser.FileSystemView;
@@ -95,7 +96,7 @@ public class ScreenCaptureUtil
 		// 后缀名
 		String formatname = "png";
 		// 设置图片文件名
-		String filename = "screenshot_" + System.currentTimeMillis() + "." + formatname;
+		String filename = "screenshot_" + getCurrentTime() + "." + formatname;
 
 		// 桌面路径
 		File desktopDir = FileSystemView.getFileSystemView().getHomeDirectory();
@@ -111,6 +112,16 @@ public class ScreenCaptureUtil
 		{
 			e.printStackTrace();
 		}
+	}
+
+	/*
+	 * 方法：获取当前时间
+	 */
+	public static String getCurrentTime()
+	{
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd_HHmmss");
+		String currentTime = df.format(System.currentTimeMillis());
+		return currentTime;
 	}
 
 }
